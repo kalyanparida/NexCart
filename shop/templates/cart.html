@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart - NexCart</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <h1>🛒 Your Cart</h1>
+
+    <div id="cartContainer"></div>
+
+    <h3 id="totalPrice"></h3>
+
+    <button onclick="placeOrder()">Place Order</button>
+
+    <script src="{% static 'js/cart.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h2 style="text-align:center;">📦 My Orders</h2>
+
+<div class="orders-container">
+
+{% if orders %}
+    {% for order in orders %}
+        <div class="order-card">
+
+            <!-- Header -->
+            <div class="order-header">
+                <h3>📦 Order #{{ order.id }}</h3>
+                <span class="status {{ order.status }}">
+                    {{ order.status }}
+                </span>
+            </div>
+
+            <!-- Order Info -->
+            <p><strong>Total:</strong> ₹{{ order.total_price }}</p>
+            <p><strong>Date:</strong> {{ order.created_at }}</p>
+
+            <hr>
+
+            <!-- Items -->
+            <div class="items">
+                {% for item in order.orderitem_set.all %}
+                    <div class="item-row">
+                        <img src="{{ item.product.image }}">
+                        <div class="item-info">
+                            <p class="item-name">{{ item.product.name }}</p>
+                            <p class="item-price">
+                                ₹{{ item.product.price }} × {{ item.quantity }}
+                            </p>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No items found</p>
+                {% endfor %}
+            </div>
+
+        </div>
+    {% endfor %}
+{% else %}
+    <p style="text-align:center;">No orders yet 😢</p>
+{% endif %}
+
+</div>
+
+</body>
+</html>
