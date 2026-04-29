@@ -1,4 +1,4 @@
-# NexCart 🛒
+# NexCart 
 
 A Django-based eCommerce web application.
 
